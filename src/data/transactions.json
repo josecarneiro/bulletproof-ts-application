@@ -9,6 +9,18 @@
     }
   },
   {
+    "id": "10",
+    "type": "exchange",
+    "from": {
+      "amount": 45300,
+      "currency": "EUR"
+    },
+    "to": {
+      "amount": 44356,
+      "currency": "USD"
+    }
+  },
+  {
     "id": "2",
     "name": "Mateus",
     "type": "outbound",

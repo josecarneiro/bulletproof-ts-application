@@ -1,4 +1,4 @@
-import { Transactions } from '../types';
+import { Transactions } from '../parsers';
 import { pause } from '../utils/pause';
 
 /* Mock fetch to always respond with Transactions data as a Transactions list endpoint would */
@@ -10,6 +10,6 @@ export const listTransactions = async () => {
   await pause(1000);
   const result = await fetch('/api/transactions/list');
   /* Type as unknown instead of default any */
-  const transactionsData = (await result.json()) as Transactions;
+  const transactionsData = (await result.json()) as unknown;
   return transactionsData;
 };

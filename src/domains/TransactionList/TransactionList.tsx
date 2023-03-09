@@ -1,5 +1,5 @@
 import { List } from '../../elements';
-import { Transactions } from '../../types';
+import { Transactions } from '../../parsers';
 import { TransactionItem } from '../TransactionItem';
 
 type TransactionListProps = { transactions: Transactions };
