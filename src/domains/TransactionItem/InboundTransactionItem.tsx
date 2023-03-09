@@ -1,5 +1,5 @@
 import { Avatar, Cell, Box, Text } from '../../elements';
-import { TransactionInbound } from '../../parsers';
+import { TransactionInbound } from '../../types';
 import { formatPrice } from '../../utils/formatPrice';
 
 export const InboundTransactionItem = ({

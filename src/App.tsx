@@ -4,51 +4,28 @@ import { ErrorInformation } from './domains/ErrorInformation';
 import { LoadingInformation } from './domains/LoadingInformation';
 import { TransactionList } from './domains/TransactionList';
 import { Container, Wrapper, Title } from './elements';
-import { Transaction, TransactionsSchema } from './parsers';
+import { Transactions } from './types';
 import { log } from './utils/logger';
 
 function App() {
-  const [transactions, setTransactions] = useState<
-    | {
-        data: Transaction[];
-        error: null;
-        loading: false;
-      }
-    | {
-        data: null;
-        error: Error;
-        loading: false;
-      }
-    | {
-        data: null;
-        error: null;
-        loading: boolean;
-      }
-  >({
-    data: null,
-    error: null,
-    loading: false
-  });
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<Error | null>(null);
+  const [transactions, setTransactions] = useState<Transactions | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        setTransactions({ data: null, error: null, loading: true });
+        setTransactions(null);
+        setError(null);
+        setLoading(true);
         const transactionsData = await listTransactions();
-        const parsedTransactionsData =
-          TransactionsSchema.parse(transactionsData);
-        setTransactions({
-          data: parsedTransactionsData,
-          error: null,
-          loading: false
-        });
+        setTransactions(transactionsData);
+        setLoading(false);
       } catch (error) {
         log('Error loading data');
-        setTransactions({
-          data: null,
-          error: error instanceof Error ? error : new Error('Unknown error'),
-          loading: false
-        });
+        setTransactions(null);
+        setError(error instanceof Error ? error : new Error('Unknown error'));
+        setLoading(false);
       }
     };
     fetchData();
@@ -58,11 +35,9 @@ function App() {
     <Wrapper>
       <Container>
         <Title>Latest Transactions</Title>
-        {(transactions.loading && <LoadingInformation />) ||
-          (transactions.error && <ErrorInformation />) ||
-          (transactions.data && (
-            <TransactionList transactions={transactions.data} />
-          ))}
+        {(loading && <LoadingInformation />) ||
+          (error && <ErrorInformation />) ||
+          (transactions && <TransactionList transactions={transactions} />)}
       </Container>
     </Wrapper>
   );
