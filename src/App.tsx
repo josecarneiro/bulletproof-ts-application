@@ -4,7 +4,7 @@ import { ErrorInformation } from './domains/ErrorInformation';
 import { LoadingInformation } from './domains/LoadingInformation';
 import { TransactionList } from './domains/TransactionList';
 import { Container, Wrapper, Title } from './elements';
-import { Transaction, TransactionListSchema } from './parsers';
+import { Transaction, TransactionsSchema } from './parsers';
 import { log } from './utils/logger';
 
 function App() {
@@ -36,7 +36,7 @@ function App() {
         setTransactions({ data: null, error: null, loading: true });
         const transactionsData = await listTransactions();
         const parsedTransactionsData =
-          TransactionListSchema.parse(transactionsData);
+          TransactionsSchema.parse(transactionsData);
         setTransactions({
           data: parsedTransactionsData,
           error: null,

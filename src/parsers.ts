@@ -25,13 +25,14 @@ export const TransactionSchema = z.union([
   TransactionOutboundSchema
 ]);
 
-export const TransactionListSchema = z.array(TransactionSchema);
+export const TransactionsSchema = z.array(TransactionSchema);
 
 export type Money = z.infer<typeof MoneySchema>;
 export type TransactionCommon = z.infer<typeof TransactionCommonSchema>;
 export type TransactionInbound = z.infer<typeof TransactionInboundSchema>;
 export type TransactionOutbound = z.infer<typeof TransactionOutboundSchema>;
 export type Transaction = z.infer<typeof TransactionSchema>;
+export type Transactions = z.infer<typeof TransactionsSchema>;
 
 // The above helps us avoid having to declare these types manually:
 
@@ -56,3 +57,5 @@ export type Transaction = z.infer<typeof TransactionSchema>;
 // };
 
 // export type Transaction = TransactionInbound | TransactionOutbound;
+
+// export type Transactions = Transaction[];

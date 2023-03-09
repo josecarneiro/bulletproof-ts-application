@@ -1,8 +1,8 @@
 import { List } from '../../elements';
-import { Transaction } from '../../parsers';
+import { Transactions } from '../../parsers';
 import { TransactionItem } from '../TransactionItem';
 
-type TransactionListProps = { transactions: Transaction[] };
+type TransactionListProps = { transactions: Transactions };
 
 export const TransactionList = ({ transactions }: TransactionListProps) => (
   <List>
