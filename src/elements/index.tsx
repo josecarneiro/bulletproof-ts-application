@@ -78,7 +78,7 @@ export const Avatar = ({
   </span>
 );
 
-const PaymentIcon = ({
+const TransactionIcon = ({
   className,
   ...props
 }: DetailedHTMLProps<HTMLAttributes<HTMLSpanElement>, HTMLSpanElement>) => (
@@ -91,12 +91,12 @@ const PaymentIcon = ({
   />
 );
 
-export const InboundPaymentIcon = () => (
-  <PaymentIcon className="bg-green-400">⬇</PaymentIcon>
+export const InboundTransactionIcon = () => (
+  <TransactionIcon className="bg-green-400">⬇</TransactionIcon>
 );
 
-export const OutboundPaymentIcon = () => (
-  <PaymentIcon className="bg-rose-400">⬆</PaymentIcon>
+export const OutboundTransactionIcon = () => (
+  <TransactionIcon className="bg-rose-400">⬆</TransactionIcon>
 );
 
 export const LoadingSpinner = () => (

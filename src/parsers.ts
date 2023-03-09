@@ -5,33 +5,33 @@ const MoneySchema = z.object({
   currency: z.string()
 });
 
-const PaymentCommonSchema = z.object({
+const TransactionCommonSchema = z.object({
   id: z.string(),
   name: z.string(),
   value: MoneySchema
 });
 
-const PaymentInboundSchema = PaymentCommonSchema.extend({
+const TransactionInboundSchema = TransactionCommonSchema.extend({
   type: z.literal('inbound')
 });
 
-const PaymentOutboundSchema = PaymentCommonSchema.extend({
+const TransactionOutboundSchema = TransactionCommonSchema.extend({
   type: z.literal('outbound'),
   reason: z.string()
 });
 
-export const PaymentSchema = z.union([
-  PaymentInboundSchema,
-  PaymentOutboundSchema
+export const TransactionSchema = z.union([
+  TransactionInboundSchema,
+  TransactionOutboundSchema
 ]);
 
-export const PaymentListSchema = z.array(PaymentSchema);
+export const TransactionListSchema = z.array(TransactionSchema);
 
 export type Money = z.infer<typeof MoneySchema>;
-export type PaymentCommon = z.infer<typeof PaymentCommonSchema>;
-export type PaymentInbound = z.infer<typeof PaymentInboundSchema>;
-export type PaymentOutbound = z.infer<typeof PaymentOutboundSchema>;
-export type Payment = z.infer<typeof PaymentSchema>;
+export type TransactionCommon = z.infer<typeof TransactionCommonSchema>;
+export type TransactionInbound = z.infer<typeof TransactionInboundSchema>;
+export type TransactionOutbound = z.infer<typeof TransactionOutboundSchema>;
+export type Transaction = z.infer<typeof TransactionSchema>;
 
 // The above helps us avoid having to declare these types manually:
 
@@ -40,19 +40,19 @@ export type Payment = z.infer<typeof PaymentSchema>;
 //   currency: string;
 // };
 
-// export type PaymentCommon = {
+// export type TransactionCommon = {
 //   id: string;
 //   name: string;
 //   value: Money;
 // };
 
-// export type PaymentInbound = PaymentCommon & {
+// export type TransactionInbound = TransactionCommon & {
 //   type: 'inbound';
 // };
 
-// export type PaymentOutbound = PaymentCommon & {
+// export type TransactionOutbound = TransactionCommon & {
 //   type: 'outbound';
 //   reason: string;
 // };
 
-// export type Payment = PaymentInbound | PaymentOutbound;
+// export type Transaction = TransactionInbound | TransactionOutbound;

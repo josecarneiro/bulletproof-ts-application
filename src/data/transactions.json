@@ -12,7 +12,7 @@
     "id": "2",
     "name": "Mateus",
     "type": "outbound",
-    "reason": "Payment for the order 123",
+    "reason": "Transaction for the order 123",
     "value": {
       "amount": 45300,
       "currency": "EUR"
@@ -22,7 +22,7 @@
     "id": "3",
     "name": "João",
     "type": "outbound",
-    "reason": "Payment for the order 123",
+    "reason": "Transaction for the order 123",
     "value": {
       "amount": 3423,
       "currency": "EUR"
@@ -32,7 +32,7 @@
     "id": "4",
     "name": "Paulo",
     "type": "inbound",
-    "reason": "Payment for the order 123",
+    "reason": "Transaction for the order 123",
     "value": {
       "amount": 1850,
       "currency": "EUR"
@@ -42,7 +42,7 @@
     "id": "5",
     "name": "Alex",
     "type": "outbound",
-    "reason": "Payment for the order 123",
+    "reason": "Transaction for the order 123",
     "value": {
       "amount": 10000,
       "currency": "EUR"
@@ -52,7 +52,7 @@
     "id": "6",
     "name": "Ankur",
     "type": "outbound",
-    "reason": "Payment for the order 123",
+    "reason": "Transaction for the order 123",
     "value": {
       "amount": 999,
       "currency": "EUR"
@@ -71,7 +71,7 @@
     "id": "8",
     "name": "Viljami",
     "type": "outbound",
-    "reason": "Payment for the order 123",
+    "reason": "Transaction for the order 123",
     "value": {
       "amount": 4500,
       "currency": "EUR"

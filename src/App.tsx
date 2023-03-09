@@ -1,16 +1,16 @@
 import { useEffect, useState } from 'react';
-import { listPayments } from './data/listPayments';
+import { listTransactions } from './data/listTransactions';
 import { ErrorInformation } from './domains/ErrorInformation';
 import { LoadingInformation } from './domains/LoadingInformation';
-import { PaymentList } from './domains/PaymentList';
-import { Container, Wrapper, Text, Title } from './elements';
-import { Payment, PaymentListSchema } from './parsers';
+import { TransactionList } from './domains/TransactionList';
+import { Container, Wrapper, Title } from './elements';
+import { Transaction, TransactionListSchema } from './parsers';
 import { log } from './utils/logger';
 
 function App() {
-  const [payments, setPayments] = useState<
+  const [transactions, setTransactions] = useState<
     | {
-        data: Payment[];
+        data: Transaction[];
         error: null;
         loading: false;
       }
@@ -33,17 +33,18 @@ function App() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        setPayments({ data: null, error: null, loading: true });
-        const paymentsData = await listPayments();
-        const parsedPaymentsData = PaymentListSchema.parse(paymentsData);
-        setPayments({
-          data: parsedPaymentsData,
+        setTransactions({ data: null, error: null, loading: true });
+        const transactionsData = await listTransactions();
+        const parsedTransactionsData =
+          TransactionListSchema.parse(transactionsData);
+        setTransactions({
+          data: parsedTransactionsData,
           error: null,
           loading: false
         });
       } catch (error) {
         log('Error loading data');
-        setPayments({
+        setTransactions({
           data: null,
           error: error instanceof Error ? error : new Error('Unknown error'),
           loading: false
@@ -56,10 +57,12 @@ function App() {
   return (
     <Wrapper>
       <Container>
-        <Title>Latest Payments</Title>
-        {(payments.loading && <LoadingInformation />) ||
-          (payments.error && <ErrorInformation />) ||
-          (payments.data && <PaymentList payments={payments.data} />)}
+        <Title>Latest Transactions</Title>
+        {(transactions.loading && <LoadingInformation />) ||
+          (transactions.error && <ErrorInformation />) ||
+          (transactions.data && (
+            <TransactionList transactions={transactions.data} />
+          ))}
       </Container>
     </Wrapper>
   );
