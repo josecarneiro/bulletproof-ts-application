@@ -1,6 +1,6 @@
 import { Avatar, Cell, Box, Column, Text } from '../../elements';
 import { PaymentInbound } from '../../parsers';
-import { Payment, PaymentOutbound } from '../../types';
+import { Payment, PaymentOutbound } from '../../parsers';
 import { unreachable } from '../../utils/unreachable';
 import { formatPrice } from '../../utils/formatPrice';
 

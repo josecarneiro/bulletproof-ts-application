@@ -33,7 +33,7 @@ export const Cell = ({
 }: DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>) => (
   <div
     className={clsx(
-      'flex gap-4 items-center bg-white p-4 rounded-lg',
+      'flex gap-4 items-center bg-white p-4 rounded-lg shadow-lg shadow-slate-900/5',
       className
     )}
     {...props}
@@ -121,3 +121,11 @@ export const Text = ({
 }: DetailedHTMLProps<HTMLAttributes<HTMLSpanElement>, HTMLSpanElement>) => (
   <span {...props} />
 );
+
+export const Title = ({
+  className,
+  ...props
+}: DetailedHTMLProps<
+  HTMLAttributes<HTMLHeadingElement>,
+  HTMLHeadingElement
+>) => <h1 className={clsx('text-4xl font-bold mb-8 mt-4')} {...props} />;

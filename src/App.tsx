@@ -3,7 +3,7 @@ import { listPayments } from './data/listPayments';
 import { ErrorInformation } from './domains/ErrorInformation';
 import { LoadingInformation } from './domains/LoadingInformation';
 import { PaymentList } from './domains/PaymentList';
-import { Container, Wrapper } from './elements';
+import { Container, Wrapper, Text, Title } from './elements';
 import { Payment, PaymentListSchema } from './parsers';
 import { log } from './utils/logger';
 
@@ -56,6 +56,7 @@ function App() {
   return (
     <Wrapper>
       <Container>
+        <Title>Latest Payments</Title>
         {(payments.loading && <LoadingInformation />) ||
           (payments.error && <ErrorInformation />) ||
           (payments.data && <PaymentList payments={payments.data} />)}

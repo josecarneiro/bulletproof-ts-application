@@ -1,5 +1,5 @@
 import { List } from '../../elements';
-import { Payment } from '../../types';
+import { Payment } from '../../parsers';
 import { PaymentItem } from '../PaymentItem';
 
 type PaymentListProps = { payments: Payment[] };
